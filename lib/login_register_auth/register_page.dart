@@ -11,6 +11,13 @@ class registerPage extends StatefulWidget {
 class _registerPageState extends State<registerPage> {
   final _email = TextEditingController();
   final _password = TextEditingController();
+
+  void dispose() {
+    super.dispose();
+    _email.dispose();
+    _password.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -23,7 +30,7 @@ class _registerPageState extends State<registerPage> {
             children: [
               Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: Text('LOCK IN.',
+                child: Text('DONT GIVE UP.',
                     style: GoogleFonts.oswald(
                       fontWeight: FontWeight.bold,
                       fontSize: 50,

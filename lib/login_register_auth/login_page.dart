@@ -11,6 +11,11 @@ class loginPage extends StatefulWidget {
 class _loginPageState extends State<loginPage> {
   final _email = TextEditingController();
   final _password = TextEditingController();
+  void dispose() {
+    super.dispose();
+    _email.dispose();
+    _password.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
