@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:winter_arc/login_register_auth/login_page.dart';
 
 class registerPage extends StatefulWidget {
   const registerPage({Key? key}) : super(key: key);
@@ -89,7 +90,13 @@ class _registerPageState extends State<registerPage> {
                       style: GoogleFonts.oswald(fontSize: 16),
                     ),
                     TextButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (context) => const loginPage(),
+                            ),
+                          );
+                        },
                         child: Text(
                           'Login',
                           style: GoogleFonts.oswald(
