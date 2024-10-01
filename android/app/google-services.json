@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "281358456546",
+    "project_id": "winterarcdemo",
+    "storage_bucket": "winterarcdemo.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:281358456546:android:9267e2c8c90cf25ad8f0bb",
+        "android_client_info": {
+          "package_name": "com.example.winter_arc"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCS450r8sb0I4pHQFAm7TZAP5vibC4pzpM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
