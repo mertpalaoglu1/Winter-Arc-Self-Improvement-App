@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:winter_arc/login_register_auth/login_page.dart';
-import 'package:winter_arc/login_register_auth/register_page.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -19,7 +18,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.white12),
       ),
-      home: const loginPage(), //Login Page döndürülüyor.
+      home: const loginPage(), //login Page döndürülüyor.
     );
   }
 }

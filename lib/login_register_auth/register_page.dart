@@ -1,6 +1,9 @@
+import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:winter_arc/login_register_auth/auth_service.dart';
 import 'package:winter_arc/login_register_auth/login_page.dart';
+import '../homepage.dart';
 
 class registerPage extends StatefulWidget {
   const registerPage({Key? key}) : super(key: key);
@@ -10,6 +13,7 @@ class registerPage extends StatefulWidget {
 }
 
 class _registerPageState extends State<registerPage> {
+  final _auth = AuthService();
   final _email = TextEditingController();
   final _password = TextEditingController();
 
@@ -70,7 +74,7 @@ class _registerPageState extends State<registerPage> {
                 child: TextButton(
                   style: ButtonStyle(
                       backgroundColor: WidgetStatePropertyAll(Colors.grey)),
-                  onPressed: () {},
+                  onPressed: _signup,
                   child: Text(
                     'Register',
                     style: GoogleFonts.oswald(
@@ -90,20 +94,21 @@ class _registerPageState extends State<registerPage> {
                       style: GoogleFonts.oswald(fontSize: 16),
                     ),
                     TextButton(
-                        onPressed: () {
-                          Navigator.of(context).push(
-                            MaterialPageRoute(
-                              builder: (context) => const loginPage(),
-                            ),
-                          );
-                        },
-                        child: Text(
-                          'Login',
-                          style: GoogleFonts.oswald(
-                              color: Colors.black,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 18),
-                        ))
+                      onPressed: () {
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (context) => const loginPage(),
+                          ),
+                        );
+                      },
+                      child: Text(
+                        'Login',
+                        style: GoogleFonts.oswald(
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 18),
+                      ),
+                    )
                   ],
                 ),
               ),
@@ -112,5 +117,18 @@ class _registerPageState extends State<registerPage> {
         ),
       ),
     );
+  }
+
+  _signup() async {
+    final user =
+        await _auth.createUserWithEmailAndPassword(_email.text, _password.text);
+    if (user != null) {
+      log("User Created Succesfully");
+      Navigator.of(context).push(
+        MaterialPageRoute(
+          builder: (context) => const homePage(),
+        ),
+      );
+    }
   }
 }

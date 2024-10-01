@@ -1,5 +1,9 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:winter_arc/homepage.dart';
+import 'package:winter_arc/login_register_auth/auth_service.dart';
 import 'package:winter_arc/login_register_auth/register_page.dart';
 
 class loginPage extends StatefulWidget {
@@ -10,6 +14,7 @@ class loginPage extends StatefulWidget {
 }
 
 class _loginPageState extends State<loginPage> {
+  final _auth = AuthService();
   final _email = TextEditingController();
   final _password = TextEditingController();
   void dispose() {
@@ -29,7 +34,7 @@ class _loginPageState extends State<loginPage> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: const EdgeInsets.only(bottom: 8.0),
                 child: Text('LOCK IN.',
                     style: GoogleFonts.oswald(
                       fontWeight: FontWeight.bold,
@@ -55,7 +60,7 @@ class _loginPageState extends State<loginPage> {
               ),
               SafeArea(
                 child: TextField(
-                  obscureText: false,
+                  obscureText: true,
                   decoration: InputDecoration(
                       focusColor: Colors.grey,
                       icon: Icon(Icons.password_outlined),
@@ -69,7 +74,7 @@ class _loginPageState extends State<loginPage> {
                 child: TextButton(
                   style: ButtonStyle(
                       backgroundColor: WidgetStatePropertyAll(Colors.grey)),
-                  onPressed: () {},
+                  onPressed: _login,
                   child: Text(
                     'Login',
                     style: GoogleFonts.oswald(
@@ -111,5 +116,18 @@ class _loginPageState extends State<loginPage> {
         ),
       ),
     );
+  }
+
+  _login() async {
+    final _user =
+        await _auth.loginUserWithEmailAndPassword(_email.text, _password.text);
+    if (_user != null) {
+      log("User Logged in succesfully");
+      Navigator.of(context).push(
+        MaterialPageRoute(
+          builder: (context) => const homePage(),
+        ),
+      );
+    }
   }
 }
