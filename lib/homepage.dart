@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:winter_arc/pages/meditationPage.dart';
+import 'package:winter_arc/pages/nofapPage.dart';
+import 'package:winter_arc/pages/toDoPage.dart';
 
 class homePage extends StatefulWidget {
   const homePage({Key? key}) : super(key: key);
@@ -13,7 +16,7 @@ class _homePageState extends State<homePage> {
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
-      body: Placeholder(),
+      body: sayfaSec(secilenItem),
       bottomNavigationBar: BottomNavigationBar(
         selectedIconTheme: IconThemeData(size: 30),
         currentIndex: secilenItem,
@@ -63,5 +66,17 @@ class _homePageState extends State<homePage> {
         ],
       ),
     ));
+  }
+
+  sayfaSec(secilenSayfa) {
+    if (secilenSayfa == 0) {
+      return nofapPage();
+    }
+    if (secilenSayfa == 1) {
+      return todoPage();
+    }
+    if (secilenSayfa == 2) {
+      return meditationPage();
+    }
   }
 }

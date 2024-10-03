@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:easy_count_timer/easy_count_timer.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:winter_arc/login_register_auth/auth_service.dart';
-import 'login_register_auth/login_page.dart';
+import '../login_register_auth/login_page.dart';
 
 class nofapPage extends StatefulWidget {
   const nofapPage({Key? key}) : super(key: key);

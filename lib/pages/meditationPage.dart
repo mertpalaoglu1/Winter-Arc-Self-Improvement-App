@@ -15,6 +15,5 @@ class _meditationPageState extends State<meditationPage> {
         Text('Meditation Page'),
       ],
     );
-    ;
   }
 }
